@@ -30,6 +30,9 @@ public:
 
 	~My_vector(){
 		delete []data;
+		data = nullptr;
+		size = 0;
+		capacity = 0;
 	}
 
 	size_t Size(){
@@ -83,10 +86,7 @@ public:
 	}
 
 	void clear(){
-		delete []data;
-		data = nullptr;
 		size = 0;
-		capacity = 0;
 	}
 
 };
