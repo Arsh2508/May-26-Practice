@@ -11,12 +11,12 @@ public:
 	My_vector(const My_vector&);
 	My_vector& operator=(const My_vector&);
 
-	size_t Size();
-	size_t Capacity();
+	size_t Size() const;
+	size_t Capacity() const;
 
 	void push_back(int);
 	void pop_back();
-	void print();
+	void print() const;
 	void resize(size_t);
 	void clear();
 

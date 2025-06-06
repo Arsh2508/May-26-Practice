@@ -64,11 +64,11 @@ My_vector::~My_vector(){
 	capacity = 0;
 }
 
-size_t My_vector::Size(){
+size_t My_vector::Size() const{
 	return size;
 }
 
-size_t My_vector::Capacity(){
+size_t My_vector::Capacity() const{
 	return capacity;
 }
 
@@ -91,7 +91,7 @@ void My_vector::pop_back(){
 	}
 }
 	
-void My_vector::print(){
+void My_vector::print() const{
 	for(int i = 0; i < size; ++i){
 		std::cout<<data[i]<<" ";
 	}
