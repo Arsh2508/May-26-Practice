@@ -11,6 +11,9 @@ public:
 	My_vector(const My_vector&);
 	My_vector& operator=(const My_vector&);
 
+	My_vector(My_vector&&);
+	My_vector& operator=(My_vector&&);
+
 	size_t Size() const;
 	size_t Capacity() const;
 

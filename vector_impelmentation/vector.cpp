@@ -23,7 +23,8 @@ My_vector::My_vector(size_t _size, int val)
 	}
 }
 
-My_vector::My_vector(const My_vector& other)
+// copy ctor
+My_vector::My_vector(const My_vector& other)	
 	: size{other.size}, capacity{other.capacity}, data{nullptr}{
 
 	if(other.data == nullptr){
@@ -38,6 +39,7 @@ My_vector::My_vector(const My_vector& other)
 
 }
 
+// copy assignment operator
 My_vector& My_vector::operator=(const My_vector& other){
 	if(&other == this){
 		return *this;
@@ -55,7 +57,34 @@ My_vector& My_vector::operator=(const My_vector& other){
 
 	return *this;
 }
-	
+
+// move ctor
+My_vector::My_vector(My_vector&& other)
+	: size{other.size}
+	, capacity{other.capacity}
+	, data{other.data}
+{
+	other.data = nullptr;
+	other.size = 0;
+	other.capacity = 0;
+}
+
+//move assignment operator
+My_vector& My_vector::operator=(My_vector&& rhs){
+	if(this == &rhs){
+		return *this;
+	}
+	size = rhs.size;
+	capacity = rhs.capacity;
+	delete []this->data;
+	data = rhs.data;
+
+	rhs.data = nullptr;
+	rhs.size = 0;
+	rhs.capacity = 0;
+
+	return *this;
+}
 
 My_vector::~My_vector(){
 	delete []data;
@@ -72,7 +101,7 @@ size_t My_vector::Capacity() const{
 	return capacity;
 }
 
-void My_vector::push_back(int val){
+void My_vector::push_back(const int val){
 	if((size + 1) > capacity){
 		capacity = capacity == 0 ? 1 : size * 2;
 		int * tmp = new int[capacity];
@@ -84,6 +113,7 @@ void My_vector::push_back(int val){
 	}
 	data[size++] = val;		
 }
+
 
 void My_vector::pop_back(){
 	if(size > 0){
@@ -117,7 +147,3 @@ void My_vector::resize(size_t new_size){
 void My_vector::clear(){
 	size = 0;
 }
-
-
-
-

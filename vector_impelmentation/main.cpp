@@ -20,8 +20,14 @@ int main()
 
 	vec2 = vec1;
 
-	vec1.print();
-	vec2.print();
+	My_vector vec3(std::move(vec2));
+
+	My_vector vec4;
+
+	vec4 = std::move(vec1);
+
+	vec4.print();
+	vec3.print();
 
 
     return 0;
